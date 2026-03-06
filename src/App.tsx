@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Volume2, VolumeX, Sparkles } from 'lucide-react';
 import { Timeline } from './components/Timeline';
 import { WishWall } from './components/WishWall';
+import { Countdown } from './components/Countdown';
 
 function App() {
   const [isStarted, setIsStarted] = useState(false);
@@ -28,14 +29,14 @@ function App() {
     <main className="min-h-screen bg-romantic-50 selection:bg-romantic-200 overflow-x-hidden font-sans">
       <AnimatePresence>
         {!isStarted ? (
-          /* --- LANDING PAGE --- */
+          /* --- LANDING PAGE WITH COUNTDOWN --- */
           <motion.div 
             key="landing"
             exit={{ opacity: 0, y: -100 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
             className="h-screen flex items-center justify-center text-center px-4 bg-white"
           >
-            <div className="space-y-8">
+            <div className="space-y-10">
               <motion.div
                 animate={{ 
                   scale: [1, 1.15, 1],
@@ -44,16 +45,26 @@ function App() {
                 transition={{ repeat: Infinity, duration: 3 }}
                 className="inline-block"
               >
-                <Heart className="w-24 h-24 text-romantic-600 fill-romantic-600 drop-shadow-lg" />
+                <Heart className="w-20 h-20 text-romantic-600 fill-romantic-600 drop-shadow-lg" />
               </motion.div>
               
-              <div className="space-y-4">
-                <h1 className="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter uppercase">
-                  Happy 6th <span className="text-romantic-600">Month</span>
-                </h1>
-                <p className="text-xl text-slate-500 font-medium italic max-w-lg mx-auto">
-                  "Every month with you is a gift I never want to stop opening."
-                </p>
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <h1 className="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter uppercase">
+                    Happy 6th <span className="text-romantic-600">Month</span>
+                  </h1>
+                  <p className="text-lg text-slate-500 font-medium italic">
+                    "Every day with you is my favorite day."
+                  </p>
+                </div>
+
+                {/* Countdown Logic */}
+                <div className="pt-4 space-y-3">
+                  <p className="text-xs font-black uppercase tracking-[0.3em] text-romantic-400">
+                    Countdown to March 10
+                  </p>
+                  <Countdown />
+                </div>
               </div>
 
               <button 
@@ -65,17 +76,17 @@ function App() {
             </div>
           </motion.div>
         ) : (
-          /* --- MAIN CONTENT --- */
+          /* --- MAIN CONTENT SECTION --- */
           <motion.div 
             key="content"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="relative"
           >
-            {/* Audio Controls */}
+            {/* Floating Audio Controls */}
             <button 
               onClick={toggleMute}
-              className="fixed bottom-8 right-8 z-50 p-4 bg-white/90 backdrop-blur-md rounded-full shadow-2xl border border-romantic-100 hover:scale-110 transition-transform active:scale-90"
+              className="fixed bottom-8 right-8 z-50 p-4 bg-white/90 backdrop-blur-md rounded-full shadow-2xl border border-romantic-100 hover:scale-110 transition-transform"
             >
               {isMuted ? (
                 <VolumeX className="text-slate-400 w-6 h-6" />
@@ -84,7 +95,7 @@ function App() {
               )}
             </button>
 
-            {/* Cinematic Header */}
+            {/* Header Section */}
             <header className="pt-32 pb-16 text-center px-4">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -100,23 +111,23 @@ function App() {
               <div className="w-24 h-1 bg-romantic-600 mx-auto rounded-full" />
             </header>
 
-            {/* Digital Scrapbook Section */}
+            {/* Scrapbook Timeline */}
             <section className="max-w-5xl mx-auto px-6 mb-32">
               <Timeline />
             </section>
 
-            {/* Interactive Wish Wall Section */}
+            {/* Wish Wall Finale */}
             <section className="bg-white border-t border-romantic-100 py-24">
               <div className="max-w-6xl mx-auto px-6">
                 <WishWall />
               </div>
             </section>
 
-            {/* Final Footer */}
+            {/* Footer */}
             <footer className="bg-slate-50 py-20 text-center border-t border-slate-200">
                <Heart className="w-10 h-10 text-romantic-300 mx-auto mb-6 opacity-50" />
                <p className="text-slate-400 font-bold uppercase tracking-widest text-sm mb-2">To many more months together</p>
-               <h3 className="text-2xl font-black text-slate-900">Happy March 10, My Love! ❤️</h3>
+               <h3 className="text-2xl font-black text-slate-900 tracking-tight">Happy March 10, My Love! ❤️</h3>
             </footer>
           </motion.div>
         )}
