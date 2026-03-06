@@ -1,0 +1,10 @@
+@import "tailwindcss"; /* The new way to load Tailwind */
+
+@theme {
+  /* This replaces the old tailwind.config.js 'extend' section */
+  --color-romantic-50: #fff1f2;
+  --color-romantic-500: #f43f5e;
+  --color-romantic-600: #e11d48;
+  
+  --font-display: "Poppins", sans-serif;
+}
