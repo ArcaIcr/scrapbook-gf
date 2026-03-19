@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Heart, Stars, Plane, Cloud, Disc, Music } from 'lucide-react';
+import { Sparkles, Plane, Cloud, Disc, Music } from 'lucide-react';
 import { Timeline } from '../components/Timeline';
 import { WishWall } from '../components/WishWall';
 import { LetterModal } from '../components/LetterModal';
