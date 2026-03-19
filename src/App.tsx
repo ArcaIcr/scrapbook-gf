@@ -8,22 +8,17 @@ import { NightModeToggle } from './components/NightModeToggle';
 
 function App() {
   const [isStarted, setIsStarted] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
   const [isNightMode, setIsNightMode] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const startExperience = () => {
     setIsStarted(true);
-    audioRef.current = new Audio('/Mundo.mp3'); 
-    audioRef.current.loop = true;
-    audioRef.current.play().catch(err => console.log("Playback failed:", err));
-  };
-
-  const toggleMute = () => {
-    if (audioRef.current) {
-      audioRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
+    // Create the audio element, allowing playback due to user click.
+    if (!audioRef.current) {
+      audioRef.current = new Audio('/Mundo.mp3');
     }
+    // The AudioPlayer component will handle the 'ended' event to loop or skip tracks
+    audioRef.current.play().catch(err => console.log("Playback failed:", err));
   };
 
   return (
@@ -35,7 +30,7 @@ function App() {
           <>
             <FallingHearts isNightMode={isNightMode} />
             <NightModeToggle isNightMode={isNightMode} toggleNightMode={() => setIsNightMode(!isNightMode)} />
-            <AudioPlayer isMuted={isMuted} toggleMute={toggleMute} />
+            <AudioPlayer audioElement={audioRef.current!} />
             <MainContent />
           </>
         )}
