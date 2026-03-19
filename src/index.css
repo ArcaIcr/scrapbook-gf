@@ -49,3 +49,12 @@
 .dark-mode .bg-blue-100 { background-color: rgba(59, 130, 246, 0.2) !important; color: #93c5fd !important; }
 .dark-mode .bg-pink-100 { background-color: rgba(236, 72, 153, 0.2) !important; color: #f9a8d4 !important; }
 .dark-mode .bg-\[\#fffcf2\] { background-color: #0f172a !important; border-color: #334155 !important; }
+
+/* Opaque card surface for stacked elements so text doesn't bleed through in Dark Mode */
+.bg-solid-card {
+  background-color: white;
+}
+.dark-mode .bg-solid-card {
+  background-color: #0f172a !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}

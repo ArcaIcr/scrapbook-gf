@@ -1,69 +1,125 @@
 import { motion } from 'framer-motion';
-import { MapPin, Heart } from 'lucide-react';
+
 
 export const LDRMap = () => {
   return (
-    <div className="py-20 max-w-5xl mx-auto px-6">
-      <div className="text-center mb-16">
-        <h3 className="text-3xl font-black text-slate-800 tracking-tight mb-3">Our Connection 🌍</h3>
-        <p className="text-slate-500 font-serif italic text-lg">Distance means so little when someone means so much.</p>
+    <div className="py-24 max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="text-center mb-16 relative z-10">
+        <h3 className="text-4xl md:text-5xl font-black text-slate-800 tracking-tight mb-4">Our Connection 🌍</h3>
+        <p className="text-slate-500 font-serif italic text-lg md:text-xl">Distance means so little when someone means so much.</p>
       </div>
 
-      <div className="relative bg-white/50 backdrop-blur-sm p-8 md:p-16 rounded-[2.5rem] shadow-xl border border-white flex items-center justify-between overflow-hidden">
-        
-        {/* Background decorative blob */}
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-50/50 via-transparent to-pink-50/50 pointer-events-none" />
+      {/* The Radar / Holographic Map Display */}
+      <div className="relative w-full h-[450px] md:h-[600px] bg-[#0b1021] rounded-[2rem] md:rounded-[3rem] shadow-2xl border-4 border-slate-900 overflow-hidden flex items-center justify-center group">
 
-        {/* CDO Pin */}
-        <div className="flex flex-col items-center relative z-10 w-1/3">
-          <motion.div 
-            animate={{ y: [0, -10, 0] }} 
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="w-16 h-16 md:w-20 md:h-20 bg-blue-100 text-blue-500 rounded-full flex items-center justify-center mb-4 shadow-sm border-4 border-white"
+        {/* Abstract Topographic / Radar Grid Background */}
+        <div className="absolute inset-0 opacity-20 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+
+        {/* Soft Ambient Core Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-radial-gradient from-romantic-900/10 to-transparent pointer-events-none" />
+
+        {/* Abstract Watercolor Island Representation (Philippines) */}
+        <motion.div
+          animate={{ scale: [1, 1.05, 1], rotate: [-5, -6, -5] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[15%] left-[30%] md:left-[35%] w-[100px] md:w-[150px] h-[160px] md:h-[200px] bg-pink-500/10 blur-[40px] md:blur-[50px] rounded-[100%] pointer-events-none"
+        /> {/* Luzon Region */}
+
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], rotate: [10, 15, 10] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute top-[45%] left-[45%] md:left-[50%] w-[120px] md:w-[180px] h-[80px] md:h-[120px] bg-rose-500/10 blur-[35px] md:blur-[45px] rounded-full pointer-events-none"
+        /> {/* Visayas Region */}
+
+        <motion.div
+          animate={{ scale: [1, 1.05, 1], rotate: [0, 5, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-[20%] right-[30%] md:right-[35%] w-[140px] md:w-[220px] h-[100px] md:h-[140px] bg-romantic-600/10 blur-[40px] md:blur-[60px] rounded-[40%] pointer-events-none"
+        /> {/* Mindanao Region */}
+
+        {/* --- THE CONNECTION ARC (SVG) --- */}
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none z-10">
+          <defs>
+            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#f472b6" stopOpacity="0.9" />
+              <stop offset="50%" stopColor="#fb7185" stopOpacity="1" />
+              <stop offset="100%" stopColor="#f43f5e" stopOpacity="0.9" />
+            </linearGradient>
+          </defs>
+
+          {/* Faded persistent background path */}
+          <path
+            d="M 35 30 Q 75 35 65 72"
+            fill="none"
+            stroke="url(#lineGrad)"
+            strokeWidth="0.2"
+            strokeDasharray="2 2"
+            className="opacity-20"
+          />
+
+          {/* Animated glowing sweep path */}
+          <motion.path
+            d="M 35 30 Q 75 35 65 72"
+            fill="none"
+            stroke="url(#lineGrad)"
+            strokeWidth="0.6"
+            strokeLinecap="round"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: [0, 1, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="drop-shadow-[0_0_8px_rgba(244,114,182,1)]"
+          />
+
+          {/* Second reverse pulsing line for intensity */}
+          <motion.path
+            d="M 35 30 Q 75 35 65 72"
+            fill="none"
+            stroke="#fff"
+            strokeWidth="0.2"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: [0, 0.8, 0] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut", delay: 1 }}
+          />
+        </svg>
+
+        {/* --- BULACAN NODE --- */}
+        <div className="absolute z-20 flex flex-col items-center top-[30%] left-[35%] -translate-x-1/2 -translate-y-1/2 group">
+          {/* Radar Ping */}
+          <span className="absolute w-12 h-12 md:w-20 md:h-20 bg-pink-400 rounded-full opacity-60 animate-ping" />
+
+          {/* Marker Pin */}
+          <motion.div
+            whileHover={{ scale: 1.2 }}
+            className="relative w-6 h-6 md:w-8 md:h-8 bg-pink-400 rounded-full border-2 md:border-4 border-[#0b1021] shadow-[0_0_20px_rgba(244,114,182,0.8)] z-10 flex items-center justify-center cursor-pointer"
           >
-            <MapPin className="w-8 h-8 md:w-10 md:h-10" />
+            <div className="w-2 h-2 bg-white rounded-full opacity-80" />
           </motion.div>
-          <span className="font-bold text-slate-800 text-lg md:text-xl text-center">Cagayan de Oro</span>
-          <span className="text-[10px] md:text-xs text-blue-400 font-black uppercase tracking-widest mt-2 bg-blue-50 px-3 py-1 rounded-full">You</span>
+
+          {/* Label Container */}
+          <div className="mt-4 flex flex-col items-center">
+            <span className="text-white font-bold text-lg md:text-xl tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">Bulacan</span>
+            <span className="text-[10px] md:text-xs text-pink-200 font-black uppercase tracking-widest bg-pink-500/30 px-3 py-1 rounded-full mt-2 border border-pink-500/40 backdrop-blur-md shadow-lg">Kiaa / Her</span>
+          </div>
         </div>
 
-        {/* Connecting Animated Line */}
-        <div className="absolute left-1/4 right-1/4 top-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
-          <svg className="w-full h-8 overflow-visible" preserveAspectRatio="none">
-            <motion.line 
-              x1="10%" y1="16" x2="90%" y2="16" 
-              stroke="#f43f5e" 
-              strokeWidth="4" 
-              strokeDasharray="8 12"
-              strokeLinecap="round"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-            />
-          </svg>
-          <motion.div 
-            initial={{ left: "10%" }}
-            animate={{ left: "90%" }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", repeatType: "reverse" }}
-            className="absolute top-1/2 -translate-y-1/2 -ml-4 bg-white p-2 rounded-full shadow-md text-romantic-500 border border-romantic-50"
-          >
-            <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 0.8, repeat: Infinity }}>
-              <Heart className="w-5 h-5 md:w-6 md:h-6 fill-romantic-500" />
-            </motion.div>
-          </motion.div>
-        </div>
+        {/* --- CDO NODE --- */}
+        <div className="absolute z-20 flex flex-col items-center top-[72%] left-[65%] -translate-x-1/2 -translate-y-1/2 group">
+          {/* Radar Ping */}
+          <span className="absolute w-12 h-12 md:w-20 md:h-20 bg-rose-500 rounded-full opacity-60 animate-ping" style={{ animationDelay: "1s" }} />
 
-        {/* Bulacan Pin */}
-        <div className="flex flex-col items-center relative z-10 w-1/3">
-          <motion.div 
-            animate={{ y: [0, -10, 0] }} 
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-            className="w-16 h-16 md:w-20 md:h-20 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center mb-4 shadow-sm border-4 border-white"
+          {/* Marker Pin */}
+          <motion.div
+            whileHover={{ scale: 1.2 }}
+            className="relative w-6 h-6 md:w-8 md:h-8 bg-rose-500 rounded-full border-2 md:border-4 border-[#0b1021] shadow-[0_0_20px_rgba(244,63,94,0.8)] z-10 flex items-center justify-center cursor-pointer"
           >
-            <MapPin className="w-8 h-8 md:w-10 md:h-10" />
+            <div className="w-2 h-2 bg-white rounded-full opacity-80" />
           </motion.div>
-          <span className="font-bold text-slate-800 text-lg md:text-xl text-center">Bulacan</span>
-          <span className="text-[10px] md:text-xs text-pink-400 font-black uppercase tracking-widest mt-2 bg-pink-50 px-3 py-1 rounded-full">Her</span>
+
+          {/* Label Container */}
+          <div className="mt-4 flex flex-col items-center">
+            <span className="text-white font-bold text-lg md:text-xl tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">Cagayan de Oro</span>
+            <span className="text-[10px] md:text-xs text-rose-200 font-black uppercase tracking-widest bg-rose-500/30 px-3 py-1 rounded-full mt-2 border border-rose-500/40 backdrop-blur-md shadow-lg">Ken / You</span>
+          </div>
         </div>
 
       </div>

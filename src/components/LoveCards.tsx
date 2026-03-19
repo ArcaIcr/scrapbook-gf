@@ -40,7 +40,7 @@ export const LoveCards = () => {
               <motion.div
                 key={reason} // The reason string acts as a unique key for layout animation
                 layout
-                className={`absolute w-full h-full bg-white rounded-[2rem] shadow-2xl flex flex-col items-center justify-center p-8 border border-romantic-100 ${isTop ? 'cursor-grab active:cursor-grabbing' : 'pointer-events-none'}`}
+                className={`absolute w-full h-full bg-solid-card rounded-[2rem] shadow-2xl flex flex-col items-center justify-center p-8 border border-romantic-100 ${isTop ? 'cursor-grab active:cursor-grabbing' : 'pointer-events-none'}`}
                 style={{ 
                   zIndex: cards.length - index,
                   transformOrigin: "bottom"
