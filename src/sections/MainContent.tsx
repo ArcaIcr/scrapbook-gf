@@ -4,6 +4,7 @@ import { Sparkles, Heart } from 'lucide-react';
 import { Timeline } from '../components/Timeline';
 import { WishWall } from '../components/WishWall';
 import { LetterModal } from '../components/LetterModal';
+import { TimeTogether } from '../components/TimeTogether';
 
 export const MainContent = () => {
   const [isLetterOpen, setIsLetterOpen] = useState(false);
@@ -33,6 +34,8 @@ export const MainContent = () => {
         </h2>
         
         <div className="w-24 h-1 bg-romantic-600 mx-auto rounded-full" />
+
+        <TimeTogether />
       </header>
 
       {/* --- DIGITAL SCRAPBOOK (TIMELINE) --- */}

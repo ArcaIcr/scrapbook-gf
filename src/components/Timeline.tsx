@@ -1,7 +1,11 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { memories } from '../data/memories';
+import { X } from 'lucide-react';
 
 export const Timeline = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <div className="relative space-y-24 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-romantic-300 before:to-transparent">
       {memories.map((memory, index) => (
@@ -27,12 +31,42 @@ export const Timeline = () => {
             <img 
               src={memory.imageUrl} 
               alt={memory.title} 
-              className="w-full h-48 object-cover rounded-xl mb-4 shadow-inner"
+              onClick={() => setSelectedImage(memory.imageUrl)}
+              className="w-full h-48 object-cover rounded-xl mb-4 shadow-inner cursor-pointer hover:opacity-90 transition-opacity"
             />
             <p className="text-slate-600 leading-relaxed">{memory.description}</p>
           </div>
         </motion.div>
       ))}
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md cursor-zoom-out"
+          >
+            <button 
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 p-2 text-white/50 hover:text-white transition-colors cursor-pointer"
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <motion.img 
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              src={selectedImage}
+              alt="Enlarged memory"
+              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl cursor-default"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

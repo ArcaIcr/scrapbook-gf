@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import { Volume2, VolumeX } from 'lucide-react';
 import { Hero } from './sections/Hero';
 import { MainContent } from './sections/MainContent';
+import { FallingHearts } from './components/FallingHearts';
 
 function App() {
   const [isStarted, setIsStarted] = useState(false);
@@ -30,6 +31,7 @@ function App() {
           <Hero onStart={startExperience} />
         ) : (
           <>
+            <FallingHearts />
             <button 
               onClick={toggleMute}
               className="fixed bottom-8 right-8 z-50 p-4 bg-white/90 backdrop-blur-md rounded-full shadow-2xl border border-romantic-100 hover:scale-110 transition-transform"
