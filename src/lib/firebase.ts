@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCy6SleUfvxj8JMT6JwJA3QHtAElyAwjUg",
-  authDomain: "anniversary-site-c7f5b.firebaseapp.com",
-  projectId: "anniversary-site-c7f5b",
-  storageBucket: "anniversary-site-c7f5b.firebasestorage.app",
-  messagingSenderId: "756019684286",
-  appId: "1:756019684286:web:4b35279c5e7baa742c4fef"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 // Initialize Firebase
