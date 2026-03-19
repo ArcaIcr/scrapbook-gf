@@ -5,6 +5,8 @@ import { Timeline } from '../components/Timeline';
 import { WishWall } from '../components/WishWall';
 import { LetterModal } from '../components/LetterModal';
 import { TimeTogether } from '../components/TimeTogether';
+import { LDRMap } from '../components/LDRMap';
+import { LoveCards } from '../components/LoveCards';
 
 export const MainContent = () => {
   const [isLetterOpen, setIsLetterOpen] = useState(false);
@@ -39,8 +41,18 @@ export const MainContent = () => {
       </header>
 
       {/* --- DIGITAL SCRAPBOOK (TIMELINE) --- */}
-      <section className="max-w-5xl mx-auto px-6 mb-32">
+      <section className="max-w-5xl mx-auto px-6 mb-16">
         <Timeline />
+      </section>
+
+      {/* --- LDR CONNECTION MAP --- */}
+      <section className="bg-slate-50 border-y border-slate-100 mb-0">
+        <LDRMap />
+      </section>
+
+      {/* --- REASONS I LOVE YOU CARDS --- */}
+      <section className="border-b border-romantic-100">
+        <LoveCards />
       </section>
 
       {/* --- INTERACTIVE WISH WALL --- */}

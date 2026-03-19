@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
-import { Heart } from 'lucide-react';
+import { Heart, Star } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-export const FallingHearts = () => {
+export const FallingHearts = ({ isNightMode = false }: { isNightMode?: boolean }) => {
   const [hearts, setHearts] = useState<{ id: number; left: number; delay: number; duration: number; size: number }[]>([]);
 
   useEffect(() => {
@@ -34,10 +34,14 @@ export const FallingHearts = () => {
              repeat: Infinity,
              ease: "linear"
            }}
-           className="absolute text-romantic-200/50"
+           className={`absolute ${isNightMode ? 'text-yellow-200/60' : 'text-romantic-200/50'}`}
            style={{ left: `${heart.left}%` }}
         >
-          <Heart size={heart.size} fill="currentColor" />
+          {isNightMode ? (
+            <Star size={heart.size} fill="currentColor" />
+          ) : (
+            <Heart size={heart.size} fill="currentColor" />
+          )}
         </motion.div>
       ))}
     </div>

@@ -8,3 +8,44 @@
   
   --font-display: "Poppins", sans-serif;
 }
+
+/* --- STARLIT NIGHT MODE OVERRIDES --- */
+.dark-mode .bg-white,
+.dark-mode .bg-slate-50,
+.dark-mode .bg-romantic-50\/50,
+.dark-mode .bg-romantic-50\/30,
+.dark-mode .bg-white\/50,
+.dark-mode .bg-white\/90 {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Make text colors pop against the dark starry bg */
+.dark-mode .text-slate-900,
+.dark-mode .text-slate-800,
+.dark-mode .text-slate-700,
+.dark-mode .text-slate-600 {
+  color: #f8fafc !important; /* slate-50 */
+}
+
+.dark-mode .text-slate-500,
+.dark-mode .text-slate-400 {
+  color: #cbd5e1 !important; /* slate-300 */
+}
+
+.dark-mode .text-slate-300 {
+  color: #94a3b8 !important; /* slate-400 */
+}
+
+/* Subtly dim the borders */
+.dark-mode .border-slate-100,
+.dark-mode .border-romantic-100,
+.dark-mode .border-romantic-200,
+.dark-mode .border-white {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Fix specific map and popup backgrounds */
+.dark-mode .bg-blue-100 { background-color: rgba(59, 130, 246, 0.2) !important; color: #93c5fd !important; }
+.dark-mode .bg-pink-100 { background-color: rgba(236, 72, 153, 0.2) !important; color: #f9a8d4 !important; }
+.dark-mode .bg-\[\#fffcf2\] { background-color: #0f172a !important; border-color: #334155 !important; }

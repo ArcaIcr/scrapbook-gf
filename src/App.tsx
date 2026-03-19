@@ -1,13 +1,15 @@
 import { useState, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { Volume2, VolumeX } from 'lucide-react';
 import { Hero } from './sections/Hero';
 import { MainContent } from './sections/MainContent';
 import { FallingHearts } from './components/FallingHearts';
+import { AudioPlayer } from './components/AudioPlayer';
+import { NightModeToggle } from './components/NightModeToggle';
 
 function App() {
   const [isStarted, setIsStarted] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [isNightMode, setIsNightMode] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const startExperience = () => {
@@ -25,19 +27,15 @@ function App() {
   };
 
   return (
-    <main className="min-h-screen bg-romantic-50 selection:bg-romantic-200 overflow-x-hidden font-sans">
+    <main className={`min-h-screen transition-colors duration-1000 selection:bg-romantic-200 overflow-x-hidden font-sans ${isNightMode ? 'bg-slate-900 dark-mode' : 'bg-romantic-50'}`}>
       <AnimatePresence mode="wait">
         {!isStarted ? (
           <Hero onStart={startExperience} />
         ) : (
           <>
-            <FallingHearts />
-            <button 
-              onClick={toggleMute}
-              className="fixed bottom-8 right-8 z-50 p-4 bg-white/90 backdrop-blur-md rounded-full shadow-2xl border border-romantic-100 hover:scale-110 transition-transform"
-            >
-              {isMuted ? <VolumeX className="text-slate-400 w-6 h-6" /> : <Volume2 className="text-romantic-600 w-6 h-6 animate-pulse" />}
-            </button>
+            <FallingHearts isNightMode={isNightMode} />
+            <NightModeToggle isNightMode={isNightMode} toggleNightMode={() => setIsNightMode(!isNightMode)} />
+            <AudioPlayer isMuted={isMuted} toggleMute={toggleMute} />
             <MainContent />
           </>
         )}

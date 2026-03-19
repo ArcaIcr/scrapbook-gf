@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Lock } from 'lucide-react';
 import { Countdown } from '../components/Countdown';
+import confetti from 'canvas-confetti';
 
 interface HeroProps {
   onStart: () => void;
@@ -14,7 +15,15 @@ export const Hero = ({ onStart }: HeroProps) => {
 
   const handleEntry = () => {
     if (password === '091025') { // Your anniversary date
-      onStart();
+      confetti({
+        particleCount: 150,
+        spread: 80,
+        origin: { y: 0.6 },
+        colors: ['#f43f5e', '#fb7185', '#e11d48', '#ffffff']
+      });
+      setTimeout(() => {
+        onStart();
+      }, 1000);
     } else {
       setError(true);
       setTimeout(() => setError(false), 1000);
