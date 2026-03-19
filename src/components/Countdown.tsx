@@ -6,16 +6,27 @@ export const Countdown = () => {
   });
 
   useEffect(() => {
-    // Target date: March 10, 2026
-    const targetDate = new Date('2026-03-10T00:00:00').getTime();
+    const getNextTargetDate = () => {
+      const now = new Date();
+      let target = new Date(now.getFullYear(), now.getMonth(), 10, 0, 0, 0);
+      
+      // If the 10th of this month has already passed, target the 10th of the next month
+      if (now.getTime() >= target.getTime()) {
+        target.setMonth(target.getMonth() + 1);
+      }
+      return target.getTime();
+    };
+
+    let targetDate = getNextTargetDate();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
-      const distance = targetDate - now;
+      let distance = targetDate - now;
 
-      if (distance < 0) {
-        clearInterval(interval);
-        return;
+      // When the countdown reaches zero, immediately compute the next target date
+      if (distance <= 0) {
+        targetDate = getNextTargetDate();
+        distance = targetDate - now;
       }
 
       setTimeLeft({
