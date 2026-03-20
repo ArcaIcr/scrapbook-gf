@@ -56,16 +56,16 @@ export const Hero = ({ onStart }: HeroProps) => {
     >
       {/* Subtle radial glow background behind everything */}
       <div className="absolute inset-0 opacity-40 pointer-events-none">
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white rounded-full blur-[80px]" />
+         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-white rounded-full blur-[80px]" />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center space-y-16 w-full max-w-md mt-10">
+      <div className="relative z-10 flex flex-col items-center space-y-8 md:space-y-10 w-full max-w-md mt-6">
         
         {/* Intro Text */}
         <motion.div 
           animate={isOpening ? { opacity: 0, y: -20 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="space-y-4"
+          className="space-y-3"
         >
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}

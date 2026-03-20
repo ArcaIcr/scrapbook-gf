@@ -3,8 +3,15 @@
 @theme {
   /* This replaces the old tailwind.config.js 'extend' section */
   --color-romantic-50: #fff1f2;
+  --color-romantic-100: #ffe4e6;
+  --color-romantic-200: #fecdd3;
+  --color-romantic-300: #fda4af;
+  --color-romantic-400: #fb7185;
   --color-romantic-500: #f43f5e;
   --color-romantic-600: #e11d48;
+  --color-romantic-700: #be123c;
+  --color-romantic-800: #9f1239;
+  --color-romantic-900: #881337;
   
   --font-display: "Poppins", sans-serif;
 }
