@@ -22,7 +22,8 @@
 .dark-mode .bg-romantic-50\/50,
 .dark-mode .bg-romantic-50\/30,
 .dark-mode .bg-white\/50,
-.dark-mode .bg-white\/90 {
+.dark-mode .bg-white\/90,
+.dark-mode .bg-white\/95 {
   background-color: rgba(255, 255, 255, 0.05) !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
